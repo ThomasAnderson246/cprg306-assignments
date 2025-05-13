@@ -1,4 +1,4 @@
-import { Libre_Barcode_128 } from "next/font/google";
+
 import StudentInfo from "./student-info";
 import Link from "next/link";
 
