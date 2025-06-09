@@ -3,7 +3,7 @@
 import { useState } from "react";
 
 export default function NewItem(){
-    let flexBox = "flex justify-center items-center mx-auto w-300 h-12 bg-gray-600"
+    
     
     const [count, setCount] = useState(1);
     const [name, setName] = useState("");
@@ -46,11 +46,20 @@ export default function NewItem(){
     }
 
     let buttonStyle = "bg-green-500 w-20 rounded hover:bg-green-300 hover:cursor-pointer active:bg-amber-400 disabled:bg-gray-500 disabled:cursor-not-allowed";
+    let inputStyle = "border rounded bg-green-500 focus:bg-green-300 text-black";
+    let flexBox = "flex justify-center items-center mx-auto w-300 h-12 bg-gray-600"
+    
     return (
         <form onSubmit={handleSubmit}>
             <div className={flexBox}>
-                <div className="flex-1 m-2"><label>Item Name: </label>
+                <div className="flex-1 m-2 text-white">Count: {count} </div>
+                <div className="flex-1 m-2"><button type="button" className={buttonStyle} onClick={increment} disabled={count===20}>+</button> </div>
+                <div className="flex-1 m-2"><button type="button" className={buttonStyle} onClick={decrement} disabled={count===1}>-</button></div>
+            </div>
+            <div className={flexBox}>
+                <div className="flex-1 m-2 text-white"><label>Item Name: </label>
                 <input
+                    className={inputStyle}
                     type="text"
                     onChange={handleNameChange}
                     value={name}
@@ -58,13 +67,11 @@ export default function NewItem(){
                 />
                 </div >  
                 
-                <div className="flex-1 m-2 text-white">Count: {count} </div>
-                <div className="flex-1 m-2"><button type="button" className={buttonStyle} onClick={increment} disabled={count===20}>+</button> </div>
-                <div className="flex-1 m-2"><button type="button" className={buttonStyle} onClick={decrement} disabled={count===1}>-</button></div>
+                
 
-                <div className="flex-1 m-1">
+                <div className="flex-1 m-1 text-white ">
                     <label>Category: </label>
-                    <select onChange={handleCategoryChange} value={category}>
+                    <select onChange={handleCategoryChange} value={category} className={inputStyle}>
                         <option value="produce">Produce</option>
                         <option value="dairy">Dairy</option>
                         <option value="bakery">Bakery</option>
