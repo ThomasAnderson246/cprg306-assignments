@@ -12,7 +12,7 @@ export default function ItemList( {items}){
 
   const handleSortChange = (event) => setSortBy(event.target.value);
 
-  const sortedItems = items.sort((a,b) => {
+  const sortedItems = [...items].sort((a,b) => {
     let itemA = a[sortBy].toUpperCase();
     let itemB = b[sortBy].toUpperCase();
     if(itemA < itemB) return -1
