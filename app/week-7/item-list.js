@@ -4,21 +4,14 @@ import Item from "./item";
 import { useState } from "react";
 
 
-export default function ItemList( {items}){
-
-  const [sortBy, setSortBy] = useState("name");
+export default function ItemList( {items, sortBy, onSortChange}){
 
   
 
-  const handleSortChange = (event) => setSortBy(event.target.value);
+  
 
-  const sortedItems = [...items].sort((a,b) => {
-    let itemA = a[sortBy].toUpperCase();
-    let itemB = b[sortBy].toUpperCase();
-    if(itemA < itemB) return -1
-    if(itemA > itemB) return 1;
-    return 0;
-  })
+
+
 
     
     return(
@@ -28,7 +21,8 @@ export default function ItemList( {items}){
             <div className="bg-green-600 p-4 rounded-lg mb-4 border border-gray-200">
               <label className="block text-amber-300 text-lg font-bold mb-2">Sort By:</label>
               <select 
-              onChange={handleSortChange}
+              onChange={onSortChange}
+              value={sortBy}
               className="block bg-amber-300 w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:border-blue-500 ">
                 <option value="name">Item Name</option>
                 <option value="category">Category</option>
@@ -37,7 +31,7 @@ export default function ItemList( {items}){
             </div>
               <div className="md:w-3/4">
               <ul className="grid grid-cols-1 sm:grid-cols-2 lg_grid-cols-3 gap-4">
-                {sortedItems.map((item) => (
+                {items.map((item) => (
                   <Item key={item.id} itemObj={item}/>
                 ))}
                 </ul>
