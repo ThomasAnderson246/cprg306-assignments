@@ -12,7 +12,7 @@ export default function ItemList( {items}){
 
   const handleSortChange = (event) => setSortBy(event.target.value);
 
-  items.sort((a,b) => {
+  const sortedItems = items.sort((a,b) => {
     let itemA = a[sortBy].toUpperCase();
     let itemB = b[sortBy].toUpperCase();
     if(itemA < itemB) return -1
@@ -37,7 +37,7 @@ export default function ItemList( {items}){
             </div>
               <div className="md:w-3/4">
               <ul className="grid grid-cols-1 sm:grid-cols-2 lg_grid-cols-3 gap-4">
-                {items.map((item) => (
+                {sortedItems.map((item) => (
                   <Item key={item.id} itemObj={item}/>
                 ))}
                 </ul>
