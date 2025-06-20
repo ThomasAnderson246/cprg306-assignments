@@ -1,5 +1,5 @@
 "use client"
-"use client"
+
 
 import Item from "./item";
 import { useState } from "react";
@@ -7,7 +7,7 @@ import { useState } from "react";
 
 export default function ItemList( {items}){
 
-  const [sortBy, setSortBy] = useState("name");
+  { /* const [sortBy, setSortBy] = useState("name");
 
   
 
@@ -19,7 +19,7 @@ export default function ItemList( {items}){
     if(itemA < itemB) return -1
     if(itemA > itemB) return 1;
     return 0;
-  })
+  }) */}
 
     
     return(
@@ -27,13 +27,13 @@ export default function ItemList( {items}){
         <div className="flex flex-col md:flex-row p-w gap-8 items-center">
           <div className="md:w-1/4 flex justify-center">
             <div className="bg-green-600 p-4 rounded-lg mb-4 border border-gray-200">
-              <label className="block text-amber-300 text-lg font-bold mb-2">Sort By:</label>
+              {/*<label className="block text-amber-300 text-lg font-bold mb-2">Sort By:</label>
               <select 
               onChange={handleSortChange}
               className="block bg-amber-300 w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:border-blue-500 ">
                 <option value="name">Item Name</option>
                 <option value="category">Category</option>
-              </select>
+              </select>*/}
             </div>
             </div>
               <div className="md:w-3/4">

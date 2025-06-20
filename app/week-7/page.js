@@ -21,8 +21,8 @@ export default function Page(){
     }
     return(
         <main className="bg-amber-300">
-            <NewItem onAddItem={handleAddItem}/>
-            <ItemList items={itemList}/>
+           <NewItem onAddItem={handleAddItem}/> 
+           <ItemList items={itemList}/> 
         </main>
     )
 }
