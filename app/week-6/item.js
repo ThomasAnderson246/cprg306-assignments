@@ -6,6 +6,7 @@ export default function Item({itemObj}){
             <h3 className={textStyle}>Item: {name}</h3>
             <p className={textStyle}>Quantity: {quantity}</p>
             <p className={textStyle}>Category: {category}</p>
+            
         </div>
     );
 }

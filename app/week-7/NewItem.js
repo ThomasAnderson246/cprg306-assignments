@@ -26,10 +26,11 @@ export default function NewItem( {onAddItem }){
             const id = generateID();
 
             let itemObject = {
-                itemName: name,
-                itemCategory: category,
-                itemCount: count,
-                itemId: id,
+                id: id,
+                name: name,
+                category: category,
+                quantity: count
+                
 
             }
 
