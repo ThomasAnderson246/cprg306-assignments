@@ -6,6 +6,7 @@ export default function MealIdeas({ingredient}){
 
     const [meals, setMeals] = useState([]);
 
+
     const loadMealIdeas = async () => {
         const mealIdeas = await fetchMealIdeas(ingredient);
         setMeals(mealIdeas);

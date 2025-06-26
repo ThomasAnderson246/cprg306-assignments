@@ -18,6 +18,7 @@ export default function Page(){
     const [itemList, setItemArray] = useState(itemArray);
     const [selectedItemName, setSelectedItemName] = useState("");
     
+    
     const handleAddItem = (itemObj) => {
         setItemArray( [...itemList, itemObj]);
     }
