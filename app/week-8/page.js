@@ -22,15 +22,23 @@ export default function Page(){
         setItemArray( [...itemList, itemObj]);
     }
 
-    const handleItemSelect = () => ();
+    const handleItemSelect = (itemName) => {
+        const cleanedItemName = itemName.split(','[0].trim().replace(/[^a-zA-Z]/g,""));
+        setSelectedItemName(cleanedItemName);
+    };
     return(
-        <main className="bg-amber-300">
-            <div>
-                <HomeButton></HomeButton>
-            </div>
-           <NewItem onAddItem={handleAddItem}/> 
-           <ItemList onItemSelect={handleItemSelect} items={itemList}/> 
-           
-        </main>
+        <main className="bg-amber-300 flex">
+            <div className="w-1/2 p4">
+                <HomeButton/>
+                <NewItem onAddItem={handleAddItem}/> 
+                <ItemList onItemSelect={handleItemSelect} items={itemList}/> 
+             </div>
+             <div className="w-1/2 p-4">
+                {selectedItemName && <MealIdeas ingredient={selectedItemName}/> }
+             </div>
+           </main>
     )
 }
+           
+        
+           
