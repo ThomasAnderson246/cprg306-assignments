@@ -4,7 +4,7 @@ export default function Item({itemObj, onSelect}){
 
     const handleClick = () => onSelect(name);
     return(
-        <div onClick={handleClick} className="bg-green-600 m-3 p-3 border w-120">
+        <div onClick={handleClick} className="bg-green-600 m-3 p-3 border w-full">
             <h3 className={textStyle}>Item: {name}</h3>
             <p className={textStyle}>Quantity: {quantity}</p>
             <p className={textStyle}>Category: {category}</p>

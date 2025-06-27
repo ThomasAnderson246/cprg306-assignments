@@ -22,17 +22,14 @@ export default function NewItem( {onAddItem }){
         {
             event.preventDefault();
 
-            
             const id = generateID();
-
+            
             let itemObject = {
                 id: id,
                 name: name,
                 category: category,
                 quantity: count
-                
-
-            }
+            }    
 
             onAddItem(itemObject);
 
@@ -52,7 +49,7 @@ export default function NewItem( {onAddItem }){
 
     let buttonStyle = "bg-green-500 w-20 rounded hover:bg-green-300 hover:cursor-pointer active:bg-amber-400 disabled:bg-gray-500 disabled:cursor-not-allowed";
     let inputStyle = "border rounded bg-green-500 focus:bg-green-300 text-black";
-    let flexBox = "flex justify-center items-center mx-auto w-300 h-12 bg-gray-600"
+    let flexBox = "flex justify-center items-center mx-auto w-300 h-12 bg-gray-600 border border-black p-2 m-2 rounded"
     
     return (
         <form onSubmit={handleSubmit}>
@@ -98,4 +95,8 @@ export default function NewItem( {onAddItem }){
     );
 }
         
+
+            
+
+    
         
