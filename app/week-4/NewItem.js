@@ -21,8 +21,11 @@ export default function NewItem(){
                 <div className="flex-1 m-2 text-white">Count: {count} </div>
                 <div className="flex-1 m-2"><button className={buttonStyle} onClick={increment} disabled={count===20}>+</button> </div>
                 <div className="flex-1 m-2"><button className={buttonStyle} onClick={decrement} disabled={count===1}>-</button></div>
+                
+                
             
         
         </div>
     );
 }
+
