@@ -1,11 +1,21 @@
 "use client"
-import { useUserAuth } from "./_utils/auth-context";
 
+import { useUserAuth } from "./_utils/auth-context";
+import { useEffect } from "react";
+import { useRouter } from "next/navigation";
 
 
 export default function LoginPage() {
 
     const {user, gitHubSignIn, firebaseSignOut } = useUserAuth();
+
+    const router = useRouter();
+
+    useEffect(() => {
+        if(user) {
+            router.push('/week-9/shopping-list/')
+        }
+    }, [user, router])
 
     async function HandleSignIn(){
         try {
