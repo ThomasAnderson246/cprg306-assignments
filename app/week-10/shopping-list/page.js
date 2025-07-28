@@ -2,8 +2,8 @@
 
 import ItemList from "./item-list";
 import NewItem from "./NewItem";
-import itemData from "./items.json";
-import { useState } from "react";
+import { dbAddItem, dbGetItems } from "../_services/shopping-list-service";
+import { useState, useEffect } from "react";
 import HomeButton from "@/app/_components/home-button";
 import MealIdeas from "./meal-ideas";
 import { useUserAuth } from "../_utils/auth-context";
@@ -11,9 +11,15 @@ import { useUserAuth } from "../_utils/auth-context";
 export default function Page(){
     let itemArray = itemData.map( (item) => ({...item}));
 
-    const [itemList, setItemArray] = useState(itemArray);
+    //const [itemList, setItemArray] = useState(itemArray);
     const [selectedItemName, setSelectedItemName] = useState("");
     const {user, gitHubSignIn, firebaseSignOut } = useUserAuth();
+    const [itemList, setItemList] = useState([]);
+    
+    async function loadItems(){
+
+    }
+    
     
     async function handleSignOut() {
         try {
