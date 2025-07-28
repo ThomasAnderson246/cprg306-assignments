@@ -25,8 +25,9 @@ export async function dbAddItem(userId, itemObj){
     try {
         const newItemRef = collection(db, "users", userId, "items");
         const newItemPromise = await addDoc(newItemRef, itemObj);
-        return newItemPromise;
         console.log(newItemPromise.id);
+        return newItemPromise;
+        
     } catch (error) {
         console.log(error);
     }

@@ -9,7 +9,7 @@ import MealIdeas from "./meal-ideas";
 import { useUserAuth } from "../_utils/auth-context";
 
 export default function Page(){
-    let itemArray = itemData.map( (item) => ({...item}));
+
 
     //const [itemList, setItemArray] = useState(itemArray);
     const [selectedItemName, setSelectedItemName] = useState("");
@@ -33,7 +33,18 @@ export default function Page(){
 
 
 
-    const handleAddItem = async(itemObj) => {
+    
+    const handleAddItem = async (itemObj) => {
+    try {
+        if (!user) return;
+
+        await dbAddItem(user.uid, itemObj);
+        await loadItems(); 
+    } catch (error) {
+        console.error("Error adding item:", error);
+    }
+}
+    /*const handleAddItem = async(itemObj) => {
         try {
             if (!user) return;
 
@@ -45,7 +56,7 @@ export default function Page(){
         } catch (error) {
             console.error("Error adding item:", error);
         }
-    }
+    }*/
     /*const handleAddItem = (itemObj) => {
         setItemList( [...itemList, itemObj]);
     }*/
