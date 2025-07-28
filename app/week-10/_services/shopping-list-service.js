@@ -3,7 +3,7 @@ import {collection, getDocs, addDoc, query } from "firebase/firestore";
 
 export async function dbGetItems(userId, itemListStateSetter){
     try {
-        const allItemsRef = collection(db, "users", userId, "items", itemId);
+        const allItemsRef = collection(db, "users", userId, "items");
         const allItemsRefQuery = query(allItemsRef);
         const querySnapshot = await getDocs(allItemsRefQuery);
         let itemList = [];
@@ -23,8 +23,9 @@ export async function dbGetItems(userId, itemListStateSetter){
 
 export async function dbAddItem(userId, itemObj){
     try {
-        const newItemRef = collection(db, "users", userId, "items", itemId);
+        const newItemRef = collection(db, "users", userId, "items");
         const newItemPromise = await addDoc(newItemRef, itemObj);
+        return newItemPromise;
         console.log(newItemPromise.id);
     } catch (error) {
         console.log(error);

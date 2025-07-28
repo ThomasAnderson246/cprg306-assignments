@@ -17,7 +17,9 @@ export default function Page(){
     const [itemList, setItemList] = useState([]);
     
     async function loadItems(){
-
+        if(user) {
+            await dbGetItems(user.uid, setItemList)
+        }
     }
     
     
@@ -31,9 +33,22 @@ export default function Page(){
 
 
 
-    const handleAddItem = (itemObj) => {
-        setItemArray( [...itemList, itemObj]);
+    const handleAddItem = async(itemObj) => {
+        try {
+            if (!user) return;
+
+            const docRef = await dbAddItem(user.uid, itemObj);
+
+            const newItemWithId = {...itemObj, id: docRef.id}
+
+            setItemList((prevItems) => [...prevItems, newItemWithId])
+        } catch (error) {
+            console.error("Error adding item:", error);
+        }
     }
+    /*const handleAddItem = (itemObj) => {
+        setItemList( [...itemList, itemObj]);
+    }*/
 
     const handleItemSelect = (itemName) => {
         let cleanedItemName = itemName.trim();
@@ -64,7 +79,7 @@ export default function Page(){
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4"> 
                 <div className="flex flex-col">
                     
-                    <ItemList onItemSelect={handleItemSelect} items={itemList}/>
+                    <ItemList onItemSelect={handleItemSelect} items={itemList} loadItems={loadItems}/>
                 </div>
                 <div className="overflow-y-auto"> 
                     {selectedItemName && <MealIdeas ingredient={selectedItemName}/> }

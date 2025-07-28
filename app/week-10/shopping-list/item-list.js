@@ -2,14 +2,18 @@
 
 
 import Item from "./item";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 
-export default function ItemList( {items, onItemSelect}){
+export default function ItemList( {items, onItemSelect, loadItems}){
 
   const [sortBy, setSortBy] = useState("name");
 
-  
+  useEffect(() => {
+    if(loadItems) {
+        loadItems();
+    }
+  }, [loadItems])
 
   const handleSortChange = (event) => setSortBy(event.target.value);
 
